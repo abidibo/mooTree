@@ -1,0 +1,392 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it_IT" xml:lang="it_IT">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>mooTree test page</title>
+<link rel="stylesheet" href="mooTree.css" type="text/css" />
+<style>
+body {
+	font-size: 12px;
+}
+code.block {
+	background: #eee;
+	border: 1px dotted #ccc;
+	display: block;
+}
+.button {
+	background: #ff6600;
+	color: #fff;
+	border:1px solid #000;
+}
+.link {
+	cursor: pointer;
+	padding: 5px 10px;
+}
+</style>
+<script type="text/javascript" src="mootools-core-1.3.1-yc.js"></script>
+<script type="text/javascript" src="../Source/mooTree.js"></script>
+<script>
+function runExample1() {
+var mytree1 = new mooTree('mootree_folder', {});
+}
+function runExample2() {
+var mytree2 = new mooTree('mootree_ex2', {expand_top: true});
+}
+function runExample3() {
+var mytree3 = new mooTree('mootree_ex3', {expand_level: 1});
+} 
+</script>
+</head>
+<body>
+<h1>mooTree demo page</h1>
+<p>
+	Welcome to the mooTree demo page!
+	<br>
+	Let's ake a look at the examples provided, notice that the tree controllers may be easily styled through css!
+	<br>
+</p>
+<h2>
+	First example
+</h2>
+<p>
+
+	Something like a folder structure, the movie natural born killers is selected (has a css &quot;selected&quot; class).
+	<br>
+	Javascript
+	<br>
+</p>
+<code class="block">
+	var mt_instance = new mooTree('mootree_folder');
+</code>
+<p>
+	Css
+
+</p>
+<code class="block">
+	.moo_tree li {
+	<br>
+	&nbsp; list-style-type: none;
+	<br>
+	}
+	<br>
+	.moo_tree .moo_tree_ctrl {
+	<br>
+	&nbsp; float: left;
+	<br>
+
+	&nbsp; width:28px;
+	<br>
+	&nbsp; height:18px;
+	<br>
+	&nbsp; cursor:pointer;
+	<br>
+	}
+	<br>
+	.moo_tree li.empty {
+	<br>
+
+	&nbsp; background: url('/media/pages/mootree/folder.gif') no-repeat left center;
+	<br>
+	&nbsp; padding-left: 28px;
+	<br>
+	}
+	<br>
+	.moo_tree .selected {
+	<br>
+	&nbsp; background-color: #eee;
+	<br>
+
+	}
+	<br>
+	.moo_tree .folder .moo_tree_less {
+	<br>
+	&nbsp; background: url('/media/pages/mootree/folder_less.gif') no-repeat left center;
+	<br>
+	}
+	<br>
+	.moo_tree .folder .moo_tree_more {
+	<br>
+	&nbsp; background: url('/media/pages/mootree/folder_more.gif') no-repeat left center;
+	<br>
+
+	}
+</code>
+<p>
+	<span class="button link" onclick="runExample1();">run javascript</span>
+</p>
+<div id="example1">
+	<ul id="mootree_folder">
+		<li class="folder">
+			Documents
+			<ul>
+				<li class="folder empty">
+
+					Pictures
+				</li>
+				<li class="folder">
+					Video
+					<ul>
+						<li>
+							<a href="#">la_vita_e_bella.avi</a>
+						</li>
+						<li class="selected">
+
+							<a href="#">natural_born_killers.avi</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li class="folder">
+			Applications
+			<ul>
+
+				<li>
+					Firefox
+				</li>
+				<li>
+					Zim
+				</li>
+				<li>
+					Vim
+				</li>
+			</ul>
+
+		</li>
+		<li class="folder empty">
+			Tmp
+		</li>
+		<li class="folder">
+			OS
+			<ul>
+				<li>
+					ubuntu_11.0.iso
+				</li>
+
+				<li>
+					gentoo.iso
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+<h2>
+	Second example
+</h2>
+<p>
+
+	This is a classical post archive example, where the tree is expanded in order to show the last article inserted.
+	<br>
+	Javascript
+</p>
+<code class="block">
+	var mt_instance = new mooTree($('mootree_ex2'), {expand_top: true});
+</code>
+<p>
+	Css
+</p>
+<code class="block">
+	.moo_tree li {
+	<br>
+
+	&nbsp; list-style-type: none;
+	<br>
+	}
+	<br>
+	.moo_tree_ctrl {
+	<br>
+	&nbsp; position: relative;
+	<br>
+	&nbsp; float: left;
+	<br>
+
+	&nbsp; margin-left: -12px;
+	<br>
+	&nbsp; width:0px;
+	<br>
+	&nbsp; height:0px;
+	<br>
+	&nbsp; cursor: pointer;
+	<br>
+	}
+	<br>
+
+	.moo_tree_more {
+	<br>
+	&nbsp; border-left: 5px solid #000;
+	<br>
+	&nbsp; border-top: 5px solid transparent;
+	<br>
+	&nbsp; border-bottom: 5px solid transparent;
+	<br>
+	&nbsp; top: 6px;
+	<br>
+
+	}
+	<br>
+	.moo_tree_less {
+	<br>
+	&nbsp; margin-left: -14px;
+	<br>
+	&nbsp; border-left: 5px solid transparent;
+	<br>
+	&nbsp; border-top: 5px solid #000;
+	<br>
+
+	&nbsp; border-right: 5px solid transparent;
+	<br>
+	&nbsp; top: 8px;
+	<br>
+	}
+</code>
+<p>
+	<span class="button link" onclick="runExample2()">run javascript</span>
+</p>
+<div id="example2">
+
+	<ul id="mootree_ex2">
+		<li>
+			2011
+			<ul>
+				<li>
+					October
+					<ul>
+						<li>
+							<a href="#">Goodbye Steve</a>
+
+						</li>
+						<li>
+							<a href="#">Stop Bunga Bunga</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					May
+					<ul>
+
+						<li>
+							<a href="#">25 best android apps</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>
+
+			2010
+			<ul>
+				<li>
+					December
+					<ul>
+						<li>
+							<a href="#">Feliz navidad</a>
+						</li>
+					</ul>
+
+				</li>
+				<li>
+					September
+					<ul>
+						<li>
+							<a href="#">Wake me up when september ends</a>
+						</li>
+					</ul>
+
+				</li>
+			</ul>
+		</li>
+		<li>
+			2009
+			<ul>
+				<li>
+					June
+					<ul>
+						<li>
+
+							<a href="#">Summer, sweet summer</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					February
+					<ul>
+						<li>
+							<a href="#">Ie sucks, history of a shit-browser</a>
+
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+<h2>
+	Third example
+</h2>
+
+<p>
+	Just to show how the <span class="evidence">expand_level</span> option works. Here we expand the tree at level 1.
+	<br>
+	Javascript
+</p>
+<code class="block">
+	var mt_instance = new mooTree('mootree_ex3', {expand_level:1});
+</code>
+<p>
+	Css
+
+</p>
+<code class="block">
+	The same as the second example
+</code>
+<p>
+	<span class="link button" onclick="runExample3();">run javascript</span>
+</p>
+<div id="example3">
+	<ul id="mootree_ex3">
+		<li>
+
+			first voice level 0
+			<ul>
+				<li>
+					first under first level 1
+				</li>
+				<li>
+					second under first level 1
+					<ul>
+						<li>
+							first under second under first level 2
+							<ul>
+
+								<li>
+									first under first under second under first level 3
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+
+		<li>
+			second voice level 0
+		</li>
+		<li>
+			third voice level 0
+			<ul>
+				<li>
+					first under third level 1
+				</li>
+				<li>
+
+					second under third level 1
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+<p><b>Please, for full documentation, examples and bla bla visit <a href="http://www.abidibo.net/projects/js/mooTree">http://www.abidibo.net/projects/js/mooTree</a></b></p>
+<p><i>Open your source</i></p>
+<p>abidibo</p>
+</body>
+</html>
