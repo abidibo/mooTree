@@ -98,7 +98,7 @@ var mooTreeListElement = new Class({
 		this.element = element;
 
 		if(typeof this.element.getChildren('ul')[0] != 'undefined') {
-			this.children = new mooTreeList(this.element.getChildren()[0], level+1, options);
+			this.children = new mooTreeList(this.element.getChildren('ul')[0], level+1, options);
 			if(this.collapseChildren()) this.children.collapse();
 			this.addController();
 		}
