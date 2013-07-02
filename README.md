@@ -12,6 +12,10 @@ It adds automatically expand and collapse controllers and can manage different i
 Every aspect is fully customizable through css.
 A base css is provided in the Demo folder.
 
+Tests
+-----------------
+Run the tests provided in the Test folder
+
 How to use
 ----------
 
